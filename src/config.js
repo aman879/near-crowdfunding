@@ -1,6 +1,6 @@
 const contractPerNetwork = {
   mainnet: '',
-  testnet: 'ins-crowdfunding.testnet',
+  testnet: 't-crdfnd.testnet',
 };
 
 // Chains for EVM Wallets
@@ -22,3 +22,6 @@ const evmWalletChains = {
 export const NetworkId = 'testnet';
 export const CrowdfundingNearContract = contractPerNetwork[NetworkId];
 export const EVMWalletChain = evmWalletChains[NetworkId];
+
+// 1738051734823516400 < 1738069020000000000
+// 18446744073709551615

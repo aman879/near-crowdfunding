@@ -10,7 +10,8 @@ const Card = ({ id, title, image, description, deadline, targetAmount, amount_co
     };
 
     const convertToIST = (timestamp) => {
-        const date = new Date(timestamp * 1000);
+        const timestampInSeconds = timestamp / 1_000_000_000;
+        const date = new Date(timestampInSeconds * 1000); 
         const options = {
             weekday: 'long',
             year: 'numeric',
@@ -19,7 +20,7 @@ const Card = ({ id, title, image, description, deadline, targetAmount, amount_co
             hour: 'numeric',
             minute: 'numeric',
             second: 'numeric',
-            timeZone: 'Asia/Kolkata'
+            timeZone: 'Asia/Kolkata' // Convert to IST
         };
         return new Intl.DateTimeFormat('en-IN', options).format(date);
     };

@@ -110,8 +110,14 @@ impl Crowdfunding {
             .get_mut(&campaign_id)
             .expect("Campaign not found");
 
+        env::log_str(&format!(
+            "Current timestamp: {}, Deadline: {}",
+            env::block_timestamp(),
+            campaign.deadline
+        ));
+
         assert!(
-            env::block_timestamp() > campaign.deadline,
+            env::block_timestamp() <= campaign.deadline,
             "Campaign has ended"
         );
 

@@ -42,11 +42,12 @@ function Index() {
                     });
 
                     const currentTimestamp = Math.floor(Date.now() / 1000);
+                    const deadlineNanoseconds = currentTimestamp * 1_000_000_000;
                     
                     const camp = campaigns.map(([id, campaign]) => ({
                         id,
                         ...campaign,
-                        status: campaign.deadline > currentTimestamp ? "open" : "closed"
+                        status: campaign.deadline > deadlineNanoseconds ? "open" : "closed"
                     }));
 
                     console.log(camp);

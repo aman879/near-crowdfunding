@@ -31,9 +31,10 @@ const Create = ({ uploadToPinata, createFund }) => {
 
         try {
             const unixTimestamp = Math.floor(new Date(deadline).getTime() / 1000);
+            const deadlineNanoseconds = unixTimestamp * 1_000_000_000;
             const ImageIpfsHash = await uploadToPinata(file);
 
-            createFund(ImageIpfsHash, name, description, targetAmount, unixTimestamp);
+            createFund(ImageIpfsHash, name, description, targetAmount, deadlineNanoseconds);
             clearImage();
         } catch (e) {
             console.error(e);
